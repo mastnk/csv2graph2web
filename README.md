@@ -5,38 +5,38 @@
 
 ### Install
 
-    ```
-    % pip install csv2graph2web
-    ```
+```
+% pip install csv2graph2web
+```
     
-    or
+or
 
-    ```
-    % pip install git+https://github.com/mastnk/csv2graph2web
-    ```
+```
+% pip install git+https://github.com/mastnk/csv2graph2web
+```
     
-    or
+or
 
-    ```
-    % git clone https://github.com/mastnk/csv2graph2web
-    % cd csv2grap2web
-    % pip install .
-    ```
+```
+% git clone https://github.com/mastnk/csv2graph2web
+% cd csv2grap2web
+% pip install .
+```
     
 
 ### Uninstall
 
-    ```
-    % pip uninstall csv2graph2web
-    ```
+```
+% pip uninstall csv2graph2web
+```
 
 ## Setup the webserver
 
 ### Direct setup via scp
 
-   ```
-   % cgw_copy --server yourhost.com --port 22 --login_name yourname --dir www/cgw
-   ```
+```
+% cgw_copy --server yourhost.com --port 22 --login_name yourname --dir www/cgw
+```
    
    - **server** specify your host server name.
    
@@ -49,68 +49,80 @@
 
 ### Get cgi file
 
-   ```
-   % cgw_copy
-   % ls -l
-   ```
+```
+% cgw_copy
+% ls -l
+```
    
-   Then, you can find the cgi file *cgw.cgi* and the directory *graphs*.
-   Please upload those two to your web server.
+Then, you can find the cgi file *cgw.cgi* and the directory *graphs*.
+Please upload those two to your web server.
 
 
 ## Example code
-    '''
-    from csv2graph2web import csv2graph2web as cgw
+```
+% cgw_copy
+% ls -l
+```
 
-    URL = '' # specify the URL for the cgw.cgi
+Then, you can find the cgi file *cgw.cgi* and the directory *graphs*.
+Please upload those two to your web server.
 
-    csv_filename = 'a.csv'    
-    line = 'epoch, loss, acc, val_loss, val_acc'
-    with open( csv_filename, 'w' ) as fout:
-        fout.write( line + '\n' )
 
-    graph_params = []
-    opt = {'xlabel':'Epoch', 'legend':True}
+## Example code
+```
+from csv2graph2web import csv2graph2web as cgw
 
-    opt['title'] = 'acc'
-    graph_params.append( ([('epoch', 'acc'), ('epoch', 'val_acc')], opt.copy()) )
-    opt['title'] = 'loss'
-    graph_params.append( ([('epoch', 'loss'), ('epoch', 'val_loss')], opt.copy()) )	
+URL = '' # specify the URL for the cgw.cgi
 
-    for epoch in range(300):
-        
-        # some processes
-        
-        # dummy code
-        loss = epoch
-        acc = epoch / 300
-        val_loss = loss * 0.9
-        val_acc = acc * 0.9
-        # dummy code
-        
+csv_filename = 'a.csv'    
+line = 'epoch, loss, acc, val_loss, val_acc'
+with open( csv_filename, 'w' ) as fout:
+    fout.write( line + '\n' )
+
+graph_params = []
+opt = {'xlabel':'Epoch', 'legend':True}
+
+opt['title'] = 'acc'
+graph_params.append( ([('epoch', 'acc'), ('epoch', 'val_acc')], opt.copy()) )
+opt['title'] = 'loss'
+graph_params.append( ([('epoch', 'loss'), ('epoch', 'val_loss')], opt.copy()) )	
+
+for epoch in range(300):
     
-        if( epoch % 10 ):
-            
-            line = '{}, {}, {}, {}, {}'.format( epoch, loss, acc, val_loss, val_acc )
-            with open( csv_filename, 'a' ) as fout:
-                fout.write( line + '\n' )
-            
-            try:
-                cgw.csv2graph2web( URL=URL, dir_name='tmp', csv_filename=csv_filename, graph_params=graph_params )
-            except:
-                pass
-    '''
+    # some processes
+    
+    # dummy code
+    loss = epoch
+    acc = epoch / 300
+    val_loss = loss * 0.9
+    val_acc = acc * 0.9
+    # dummy code
+    
+
+    if( epoch % 10 ):
+        
+        line = '{}, {}, {}, {}, {}'.format( epoch, loss, acc, val_loss, val_acc )
+        with open( csv_filename, 'a' ) as fout:
+            fout.write( line + '\n' )
+        
+        try:
+            cgw.csv2graph2web( URL=URL, dir_name='tmp', csv_filename=csv_filename, graph_params=graph_params )
+        except:
+            pass
+```
+
     
     Then, you can see the graphs in the *URL*.
     
 ## Scripts
 
 ### cgw_copy
-	It generate the cgi for the web server.
 
-    ```
-    % cgw_copy -h
-    ```
+It generate the cgi for the web server.
+
+ ```
+ % cgw_copy -h
+ ```
 
 ## Functions
 
