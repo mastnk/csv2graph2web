@@ -38,13 +38,13 @@ or
 % cgw_copy --server yourhost.com --port 22 --login_name yourname --dir www/cgw
 ```
    
-   - **server** specify your host server name.
+- **server** specify your host server name.
    
-   - **port** port for ssh (defulat: 22).
+- **port** port for ssh (defulat: 22).
    
-   - **login_name** specify your login name for the host server.
+- **login_name** specify your login name for the host server.
    
-   - **dir** specify the directory which you want to install on the host sever.
+- **dir** specify the directory which you want to install on the host sever.
 
 
 ### Get cgi file
@@ -110,7 +110,6 @@ for epoch in range(300):
         except:
             pass
 ```
-
     
     Then, you can see the graphs in the *URL*.
     
@@ -120,33 +119,37 @@ for epoch in range(300):
 
 It generate the cgi for the web server.
 
- ```
- % cgw_copy -h
- ```
+```
+% cgw_copy -h
+```
 
 ## Functions
 
 ### csv2graph2web( URL, dir_name, csv_filename, graph_params ) -> None
 
-    - **URL**
-        The url which represents the *cgw.cgi*. 
-        You can also check the graphs from this URL.
+- **URL**
+
+    The url which represents the *cgw.cgi*. 
+    You can also check the graphs from this URL.
     
-    - **dir_name**
-        The title of graphs. It appears in the html.
+- **dir_name**
 
-    - **csv_filename**
+    The title of graphs. It appears in the html.
 
-    - **graph_params**
-        graph_params = [ list_params, opt ]
+- **csv_filename**
+
+- **graph_params**
+
+    graph_params = \[ list_params, opt \]
         
-        - **list_params**
-            list_params = [(x0,y0), (x1,y1), ...]
+     - **list_params**
+
+        list_params = [(x0,y0), (x1,y1), ...]
             
-            xn: The index of x axis
+        xn: The index of x axis
 
-            yn: The index of y axis
+        yn: The index of y axis
         
-        - **opt**
-        	dictionary of the options: *title*, *xlabel*, *ylabel*
+     - **opt**
+     	dictionary of the options: *title*, *xlabel*, *ylabel*
 
